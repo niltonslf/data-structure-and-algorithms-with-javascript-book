@@ -35,9 +35,6 @@ function baseConverter(decNumber, base) {
   while (number > 0) {
     rem = Math.floor(number % base)
     remStack.push(rem)
-
-    console.log({ rem })
-
     number = Math.floor(number / base)
   }
 
