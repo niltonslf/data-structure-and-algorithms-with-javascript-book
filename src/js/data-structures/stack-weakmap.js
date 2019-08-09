@@ -42,7 +42,13 @@ class Stack {
   }
 
   toString() {
-    // TODO:
+    if (this.isEmpty()) return ''
+
+    let stackString = `${items.get(this)[0]}`
+    for (let i = 1; i < this.size(); i++) {
+      stackString = `${stackString},${items.get(this)[i]}`
+    }
+    return stackString
   }
 }
 
