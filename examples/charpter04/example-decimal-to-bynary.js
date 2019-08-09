@@ -21,4 +21,29 @@ function decimalToBinary(decNumber) {
  * Testing
  */
 
-console.log(decimalToBinary(203))
+// console.log(decimalToBinary(203))
+
+function baseConverter(decNumber, base) {
+  const remStack = new Stack()
+  const digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVXZ'
+  let number = decNumber
+  let rem,
+    baseString = ''
+
+  if (!(base >= 2 && base <= 36)) return ''
+
+  while (number > 0) {
+    rem = Math.floor(number % base)
+    remStack.push(rem)
+
+    console.log({ rem })
+
+    number = Math.floor(number / base)
+  }
+
+  while (!remStack.isEmpty()) baseString += digits[remStack.pop()]
+
+  return baseString
+}
+
+console.log(baseConverter(100, 8))
