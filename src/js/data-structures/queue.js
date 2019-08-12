@@ -1,8 +1,8 @@
 class Queue {
   constructor() {
-    this.count = 0
-    this.lowestCount = 0
-    this.items = {}
+    this._count = 0
+    this._lowestCount = 0
+    this._items = {}
   }
 
   /**
@@ -10,8 +10,8 @@ class Queue {
    * @param {*} element
    */
   enqueue(element) {
-    this.items[this.count] = element
-    this.count++
+    this._items[this._count] = element
+    this._count++
   }
 
   /**
@@ -20,8 +20,8 @@ class Queue {
    */
   dequeue() {
     if (this.isEmpty()) return undefined
-    const result = this.items[this.lowestCount]
-    this.lowestCount++
+    const result = this._items[this._lowestCount]
+    this._lowestCount++
     return result
   }
 
@@ -30,14 +30,14 @@ class Queue {
    */
   peek() {
     if (this.isEmpty()) return undefined
-    return this.items[this.lowestCount]
+    return this._items[this._lowestCount]
   }
 
   /**
    * @returns {int} retorna tamanho da fila
    */
   size() {
-    return this.count - this.lowestCount
+    return this._count - this._lowestCount
   }
 
   /**
@@ -52,16 +52,16 @@ class Queue {
    * Limpa a fila
    */
   clear() {
-    this.items = {}
-    this.count = 0
-    this.lowestCount = 0
+    this._items = {}
+    this._count = 0
+    this._lowestCount = 0
   }
 
   toString() {
     if (this.isEmpty()) return ''
-    let objString = `${this.items[this.lowestCount]}`
-    for (let i = this.lowestCount + 1; i < this.count(); i++) {
-      objString += `${objString}, ${this.items[i]}`
+    let objString = `${this._items[this._lowestCount]}`
+    for (let i = this._lowestCount + 1; i < this._count(); i++) {
+      objString += `${objString}, ${this._items[i]}`
     }
 
     return objString
